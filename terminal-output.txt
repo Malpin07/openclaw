@@ -1,0 +1,858 @@
+PR #192879 — raw recorded terminal output
+
+The blocks below are concatenated from the named original stdout/source-emitted files without JSON parsing or reserialization. Only local absolute paths, local fixture ports, and UUID-shaped identifiers were replaced. Original files and receipts were not modified.
+
+===== CURRENT CANDIDATE 7db7289ffa57b3580af3212cd0f0264175199819 =====
+
+--- 04-get-cli-created.stdout.log ---
+{
+  "id": "<REDACTED_UUID>",
+  "agentId": "probe",
+  "name": "cli-storage",
+  "enabled": false,
+  "createdAtMs": 1795433132324,
+  "schedule": {
+    "kind": "stream",
+    "command": [
+      "<REDACTED_LOCAL_PATH>",
+      "<REDACTED_LOCAL_PATH>",
+      "<REDACTED_LOCAL_PATH>"
+    ],
+    "mode": "match",
+    "match": "^ERROR ",
+    "batchMs": 50
+  },
+  "sessionTarget": "isolated",
+  "wakeMode": "now",
+  "payload": {
+    "kind": "script",
+    "toolsAllow": [],
+    "script": "json({ state: { batch: trigger.streamBatch } });",
+    "timeoutSeconds": 300,
+    "toolBudget": 50
+  },
+  "delivery": {
+    "mode": "none",
+    "channel": "last"
+  },
+  "scheduledToolPolicy": {
+    "version": 1,
+    "mode": "trusted"
+  },
+  "ownerProfileId": "gateway-owner",
+  "state": {
+    "streamSourceIdentity": "<REDACTED_UUID>",
+    "streamStatus": "stopped"
+  },
+  "updatedAtMs": 1795433132324,
+  "streamExecutionHost": "gateway",
+  "configRevision": "sha256:lGe7gXxOna0gsVYUsvMcbZJnvbb1HMcolY_X4GkYc_o",
+  "reauthorizationRequired": false
+}
+
+--- 06-get-cli-edited.stdout.log ---
+{
+  "id": "<REDACTED_UUID>",
+  "agentId": "probe",
+  "name": "cli-storage",
+  "enabled": false,
+  "createdAtMs": 1795433132324,
+  "schedule": {
+    "kind": "stream",
+    "command": [
+      "<REDACTED_LOCAL_PATH>",
+      "<REDACTED_LOCAL_PATH>",
+      "<REDACTED_LOCAL_PATH>"
+    ],
+    "mode": "match",
+    "match": "^NOTICE ",
+    "batchMs": 50
+  },
+  "sessionTarget": "isolated",
+  "wakeMode": "now",
+  "payload": {
+    "kind": "script",
+    "toolsAllow": [],
+    "script": "json({ state: { batch: trigger.streamBatch } });",
+    "timeoutSeconds": 300,
+    "toolBudget": 50
+  },
+  "delivery": {
+    "mode": "none",
+    "channel": "last"
+  },
+  "scheduledToolPolicy": {
+    "version": 1,
+    "mode": "trusted"
+  },
+  "ownerProfileId": "gateway-owner",
+  "state": {
+    "streamSourceIdentity": "<REDACTED_UUID>",
+    "streamStatus": "stopped",
+    "scheduleActivatedAtMs": 1795433134908
+  },
+  "updatedAtMs": 1795433134908,
+  "streamExecutionHost": "gateway",
+  "configRevision": "sha256:vtr39ytqerFhJNNX2FnC2mhXZgzmFlfus0JpNlQVJBw",
+  "reauthorizationRequired": false
+}
+
+--- 07-rpc-unsafe.stdout.log ---
+{
+  "ok": false,
+  "error": {
+    "type": "gateway_request_error",
+    "code": "UNAVAILABLE",
+    "message": "Error: cron stream match is not a safe regular expression (unsafe-nested-repetition)",
+    "retryable": false
+  }
+}
+
+--- 09-get-padded-false.stdout.log ---
+{
+  "id": "<REDACTED_UUID>",
+  "agentId": "probe",
+  "name": "padded-false",
+  "enabled": true,
+  "createdAtMs": 1795433138435,
+  "schedule": {
+    "kind": "stream",
+    "command": [
+      "<REDACTED_LOCAL_PATH>",
+      "<REDACTED_LOCAL_PATH>",
+      "<REDACTED_LOCAL_PATH>"
+    ],
+    "mode": "match",
+    "match": "^ERROR ",
+    "batchMs": 50
+  },
+  "sessionTarget": "isolated",
+  "wakeMode": "now",
+  "payload": {
+    "kind": "script",
+    "toolsAllow": [],
+    "script": "json({ state: { batch: trigger.streamBatch } });",
+    "timeoutSeconds": 300,
+    "toolBudget": 50
+  },
+  "delivery": {
+    "mode": "none"
+  },
+  "scheduledToolPolicy": {
+    "version": 1,
+    "mode": "trusted"
+  },
+  "ownerProfileId": "gateway-owner",
+  "state": {
+    "streamSourceIdentity": "<REDACTED_UUID>",
+    "streamStatus": "running",
+    "streamConsecutiveFailures": 0,
+    "streamLastStartedAtMs": 1795433138460
+  },
+  "updatedAtMs": 1795433138435,
+  "streamExecutionHost": "gateway",
+  "configRevision": "sha256:53FpPdElxwTUnf4eIm3px2qwrlZG7t4PF5wQD8l1Tdg",
+  "reauthorizationRequired": false
+}
+
+--- 13-get-unpadded-control.stdout.log ---
+{
+  "id": "<REDACTED_UUID>",
+  "agentId": "probe",
+  "name": "unpadded-control",
+  "enabled": true,
+  "createdAtMs": 1795433143373,
+  "schedule": {
+    "kind": "stream",
+    "command": [
+      "<REDACTED_LOCAL_PATH>",
+      "<REDACTED_LOCAL_PATH>",
+      "<REDACTED_LOCAL_PATH>"
+    ],
+    "mode": "match",
+    "match": "^ERROR",
+    "batchMs": 50
+  },
+  "sessionTarget": "isolated",
+  "wakeMode": "now",
+  "payload": {
+    "kind": "script",
+    "toolsAllow": [],
+    "script": "json({ state: { batch: trigger.streamBatch } });",
+    "timeoutSeconds": 300,
+    "toolBudget": 50
+  },
+  "delivery": {
+    "mode": "none"
+  },
+  "scheduledToolPolicy": {
+    "version": 1,
+    "mode": "trusted"
+  },
+  "ownerProfileId": "gateway-owner",
+  "state": {
+    "streamSourceIdentity": "<REDACTED_UUID>",
+    "streamStatus": "running",
+    "streamConsecutiveFailures": 0,
+    "streamLastStartedAtMs": 1795433143393
+  },
+  "updatedAtMs": 1795433143373,
+  "streamExecutionHost": "gateway",
+  "configRevision": "sha256:0RY-MMPlsK2W51Fr7WRebpVTy2Yx99nI9nP5zeFFivo",
+  "reauthorizationRequired": false
+}
+
+--- 17-get-leading-space.stdout.log ---
+{
+  "id": "<REDACTED_UUID>",
+  "agentId": "probe",
+  "name": "leading-space",
+  "enabled": true,
+  "createdAtMs": 1795433148271,
+  "schedule": {
+    "kind": "stream",
+    "command": [
+      "<REDACTED_LOCAL_PATH>",
+      "<REDACTED_LOCAL_PATH>",
+      "<REDACTED_LOCAL_PATH>"
+    ],
+    "mode": "match",
+    "match": " ERROR",
+    "batchMs": 50
+  },
+  "sessionTarget": "isolated",
+  "wakeMode": "now",
+  "payload": {
+    "kind": "script",
+    "toolsAllow": [],
+    "script": "json({ state: { batch: trigger.streamBatch } });",
+    "timeoutSeconds": 300,
+    "toolBudget": 50
+  },
+  "delivery": {
+    "mode": "none"
+  },
+  "scheduledToolPolicy": {
+    "version": 1,
+    "mode": "trusted"
+  },
+  "ownerProfileId": "gateway-owner",
+  "state": {
+    "streamSourceIdentity": "<REDACTED_UUID>",
+    "streamStatus": "running",
+    "streamConsecutiveFailures": 0,
+    "streamLastStartedAtMs": 1795433148291
+  },
+  "updatedAtMs": 1795433148271,
+  "streamExecutionHost": "gateway",
+  "configRevision": "sha256:cfhpDaE5dSUZb7hOrGsAfSqpbeXC9U0UPfHU43HDE9c",
+  "reauthorizationRequired": false
+}
+
+--- 27-runs-unpadded-control.stdout.log ---
+{
+  "entries": [
+    {
+      "ts": 1795433157466,
+      "jobId": "<REDACTED_UUID>",
+      "action": "finished",
+      "status": "ok",
+      "completionStatus": "succeeded",
+      "runId": "cron:<REDACTED_UUID>:1795433157238:cron-request.<REDACTED_UUID>",
+      "runAtMs": 1795433157238,
+      "durationMs": 228,
+      "deliveryStatus": "not-requested",
+      "delivery": {
+        "intended": {
+          "source": "explicit"
+        }
+      },
+      "jobName": "unpadded-control",
+      "tsIso": "2026-11-23T19:25:57.466+08:00",
+      "runAtIso": "2026-11-23T19:25:57.238+08:00"
+    }
+  ],
+  "total": 1,
+  "offset": 0,
+  "limit": 50,
+  "hasMore": false,
+  "nextOffset": null
+}
+
+--- 29-runs-before-positive-padded-false.stdout.log ---
+{
+  "entries": [],
+  "total": 0,
+  "offset": 0,
+  "limit": 50,
+  "hasMore": false,
+  "nextOffset": null
+}
+
+--- 30-get-padded-false.stdout.log ---
+{
+  "id": "<REDACTED_UUID>",
+  "agentId": "probe",
+  "name": "padded-false",
+  "enabled": true,
+  "createdAtMs": 1795433138435,
+  "schedule": {
+    "kind": "stream",
+    "command": [
+      "<REDACTED_LOCAL_PATH>",
+      "<REDACTED_LOCAL_PATH>",
+      "<REDACTED_LOCAL_PATH>"
+    ],
+    "mode": "match",
+    "match": "^ERROR ",
+    "batchMs": 50
+  },
+  "sessionTarget": "isolated",
+  "wakeMode": "now",
+  "payload": {
+    "kind": "script",
+    "toolsAllow": [],
+    "script": "json({ state: { batch: trigger.streamBatch } });",
+    "timeoutSeconds": 300,
+    "toolBudget": 50
+  },
+  "delivery": {
+    "mode": "none"
+  },
+  "scheduledToolPolicy": {
+    "version": 1,
+    "mode": "trusted"
+  },
+  "ownerProfileId": "gateway-owner",
+  "state": {
+    "streamSourceIdentity": "<REDACTED_UUID>",
+    "streamStatus": "running",
+    "streamConsecutiveFailures": 0,
+    "streamLastStartedAtMs": 1795433138460,
+    "lastRunAtMs": 1795433164638,
+    "lastRunStatus": "ok",
+    "lastStatus": "ok",
+    "lastDurationMs": 24,
+    "lastDeliveryStatus": "not-requested",
+    "lastFailureNotificationDeliveryStatus": "not-requested",
+    "consecutiveErrors": 0,
+    "consecutiveSkipped": 0,
+    "triggerState": {
+      "batch": "ERROR ok"
+    }
+  },
+  "updatedAtMs": 1795433164662,
+  "streamExecutionHost": "gateway",
+  "configRevision": "sha256:53FpPdElxwTUnf4eIm3px2qwrlZG7t4PF5wQD8l1Tdg",
+  "reauthorizationRequired": false,
+  "lastRunAtMs": 1795433164638,
+  "lastRunStatus": "ok",
+  "lastDeliveryStatus": "not-requested",
+  "lastFailureNotificationDeliveryStatus": "not-requested"
+}
+
+--- 31-runs-padded-false.stdout.log ---
+{
+  "entries": [
+    {
+      "ts": 1795433164662,
+      "jobId": "<REDACTED_UUID>",
+      "action": "finished",
+      "status": "ok",
+      "completionStatus": "succeeded",
+      "runId": "cron:<REDACTED_UUID>:1795433164638:cron-request.<REDACTED_UUID>",
+      "runAtMs": 1795433164638,
+      "durationMs": 24,
+      "deliveryStatus": "not-requested",
+      "delivery": {
+        "intended": {
+          "source": "explicit"
+        }
+      },
+      "jobName": "padded-false",
+      "tsIso": "2026-11-23T19:26:04.662+08:00",
+      "runAtIso": "2026-11-23T19:26:04.638+08:00"
+    }
+  ],
+  "total": 1,
+  "offset": 0,
+  "limit": 50,
+  "hasMore": false,
+  "nextOffset": null
+}
+
+--- 37-runs-before-positive-leading-space.stdout.log ---
+{
+  "entries": [],
+  "total": 0,
+  "offset": 0,
+  "limit": 50,
+  "hasMore": false,
+  "nextOffset": null
+}
+
+--- 38-get-leading-space.stdout.log ---
+{
+  "id": "<REDACTED_UUID>",
+  "agentId": "probe",
+  "name": "leading-space",
+  "enabled": true,
+  "createdAtMs": 1795433148271,
+  "schedule": {
+    "kind": "stream",
+    "command": [
+      "<REDACTED_LOCAL_PATH>",
+      "<REDACTED_LOCAL_PATH>",
+      "<REDACTED_LOCAL_PATH>"
+    ],
+    "mode": "match",
+    "match": " ERROR",
+    "batchMs": 50
+  },
+  "sessionTarget": "isolated",
+  "wakeMode": "now",
+  "payload": {
+    "kind": "script",
+    "toolsAllow": [],
+    "script": "json({ state: { batch: trigger.streamBatch } });",
+    "timeoutSeconds": 300,
+    "toolBudget": 50
+  },
+  "delivery": {
+    "mode": "none"
+  },
+  "scheduledToolPolicy": {
+    "version": 1,
+    "mode": "trusted"
+  },
+  "ownerProfileId": "gateway-owner",
+  "state": {
+    "streamSourceIdentity": "<REDACTED_UUID>",
+    "streamStatus": "running",
+    "streamConsecutiveFailures": 0,
+    "streamLastStartedAtMs": 1795433148291,
+    "lastRunAtMs": 1795433174322,
+    "lastRunStatus": "ok",
+    "lastStatus": "ok",
+    "lastDurationMs": 24,
+    "lastDeliveryStatus": "not-requested",
+    "lastFailureNotificationDeliveryStatus": "not-requested",
+    "consecutiveErrors": 0,
+    "consecutiveSkipped": 0,
+    "triggerState": {
+      "batch": " ERROR ok"
+    }
+  },
+  "updatedAtMs": 1795433174346,
+  "streamExecutionHost": "gateway",
+  "configRevision": "sha256:cfhpDaE5dSUZb7hOrGsAfSqpbeXC9U0UPfHU43HDE9c",
+  "reauthorizationRequired": false,
+  "lastRunAtMs": 1795433174322,
+  "lastRunStatus": "ok",
+  "lastDeliveryStatus": "not-requested",
+  "lastFailureNotificationDeliveryStatus": "not-requested"
+}
+
+--- 39-runs-leading-space.stdout.log ---
+{
+  "entries": [
+    {
+      "ts": 1795433174346,
+      "jobId": "<REDACTED_UUID>",
+      "action": "finished",
+      "status": "ok",
+      "completionStatus": "succeeded",
+      "runId": "cron:<REDACTED_UUID>:1795433174322:cron-request.<REDACTED_UUID>",
+      "runAtMs": 1795433174322,
+      "durationMs": 24,
+      "deliveryStatus": "not-requested",
+      "delivery": {
+        "intended": {
+          "source": "explicit"
+        }
+      },
+      "jobName": "leading-space",
+      "tsIso": "2026-11-23T19:26:14.346+08:00",
+      "runAtIso": "2026-11-23T19:26:14.322+08:00"
+    }
+  ],
+  "total": 1,
+  "offset": 0,
+  "limit": 50,
+  "hasMore": false,
+  "nextOffset": null
+}
+
+--- padded-false.source-emitted.jsonl ---
+"ERRORLESS"
+"ERROR ok"
+
+--- leading-space.source-emitted.jsonl ---
+"ERROR ok"
+" ERROR ok"
+
+--- unpadded-control.source-emitted.jsonl ---
+"ERRORLESS"
+
+===== CURRENT CANDIDATE ESCAPED-SPACE BOUNDARY 7db7289ffa57b3580af3212cd0f0264175199819 =====
+
+--- 07-rpc-unsafe.stdout.log ---
+{
+  "ok": false,
+  "error": {
+    "type": "gateway_request_error",
+    "code": "UNAVAILABLE",
+    "message": "Error: cron stream match is not a safe regular expression (unsafe-nested-repetition)",
+    "retryable": false
+  }
+}
+
+--- 08-rpc-whitespace-only.stdout.log ---
+{
+  "ok": false,
+  "error": {
+    "type": "gateway_request_error",
+    "code": "UNAVAILABLE",
+    "message": "Error: cron stream match is not a safe regular expression (empty)",
+    "retryable": false
+  }
+}
+
+--- 09-rpc-empty.stdout.log ---
+{
+  "ok": false,
+  "error": {
+    "type": "gateway_request_error",
+    "code": "UNAVAILABLE",
+    "message": "Error: cron stream match is required when mode=\"match\"",
+    "retryable": false
+  }
+}
+
+--- 10-rpc-escaped-space.stdout.log ---
+{
+  "id": "<REDACTED_UUID>",
+  "agentId": "probe",
+  "name": "escaped-space",
+  "enabled": false,
+  "createdAtMs": 1795433226955,
+  "schedule": {
+    "kind": "stream",
+    "command": [
+      "<REDACTED_LOCAL_PATH>",
+      "<REDACTED_LOCAL_PATH>",
+      "<REDACTED_LOCAL_PATH>"
+    ],
+    "mode": "match",
+    "match": "^ERROR\\ ",
+    "batchMs": 50
+  },
+  "sessionTarget": "isolated",
+  "wakeMode": "now",
+  "payload": {
+    "kind": "script",
+    "toolsAllow": [],
+    "script": "json({ state: { batch: trigger.streamBatch } });",
+    "timeoutSeconds": 300,
+    "toolBudget": 50
+  },
+  "delivery": {
+    "mode": "none"
+  },
+  "scheduledToolPolicy": {
+    "version": 1,
+    "mode": "trusted"
+  },
+  "ownerProfileId": "gateway-owner",
+  "state": {
+    "streamSourceIdentity": "<REDACTED_UUID>",
+    "streamStatus": "stopped"
+  },
+  "updatedAtMs": 1795433226955,
+  "streamExecutionHost": "gateway",
+  "configRevision": "sha256:CvIU98ClIqp8fLmymac3MMH6efZLApuRQ0cG8-HxHeA",
+  "reauthorizationRequired": false,
+  "deliveryPreview": {
+    "label": "not requested",
+    "detail": "not requested"
+  }
+}
+
+--- 12-get-restored.stdout.log ---
+{
+  "id": "<REDACTED_UUID>",
+  "agentId": "probe",
+  "name": "escaped-space",
+  "enabled": false,
+  "createdAtMs": 1795433226955,
+  "schedule": {
+    "kind": "stream",
+    "command": [
+      "<REDACTED_LOCAL_PATH>",
+      "<REDACTED_LOCAL_PATH>",
+      "<REDACTED_LOCAL_PATH>"
+    ],
+    "mode": "match",
+    "match": "^ERROR\\ ",
+    "batchMs": 50
+  },
+  "sessionTarget": "isolated",
+  "wakeMode": "now",
+  "payload": {
+    "kind": "script",
+    "toolsAllow": [],
+    "script": "json({ state: { batch: trigger.streamBatch } });",
+    "timeoutSeconds": 300,
+    "toolBudget": 50
+  },
+  "delivery": {
+    "mode": "none"
+  },
+  "scheduledToolPolicy": {
+    "version": 1,
+    "mode": "trusted"
+  },
+  "ownerProfileId": "gateway-owner",
+  "state": {
+    "streamSourceIdentity": "<REDACTED_UUID>",
+    "streamStatus": "stopped"
+  },
+  "updatedAtMs": 1795433226955,
+  "streamExecutionHost": "gateway",
+  "configRevision": "sha256:CvIU98ClIqp8fLmymac3MMH6efZLApuRQ0cG8-HxHeA",
+  "reauthorizationRequired": false
+}
+
+--- 15-runs-escaped-before-positive.stdout.log ---
+{
+  "entries": [],
+  "total": 0,
+  "offset": 0,
+  "limit": 50,
+  "hasMore": false,
+  "nextOffset": null
+}
+
+--- 16-get-escaped-space.stdout.log ---
+{
+  "id": "<REDACTED_UUID>",
+  "agentId": "probe",
+  "name": "escaped-space",
+  "enabled": true,
+  "createdAtMs": 1795433226955,
+  "schedule": {
+    "kind": "stream",
+    "command": [
+      "<REDACTED_LOCAL_PATH>",
+      "<REDACTED_LOCAL_PATH>",
+      "<REDACTED_LOCAL_PATH>"
+    ],
+    "mode": "match",
+    "match": "^ERROR\\ ",
+    "batchMs": 50
+  },
+  "sessionTarget": "isolated",
+  "wakeMode": "now",
+  "payload": {
+    "kind": "script",
+    "toolsAllow": [],
+    "script": "json({ state: { batch: trigger.streamBatch } });",
+    "timeoutSeconds": 300,
+    "toolBudget": 50
+  },
+  "delivery": {
+    "mode": "none"
+  },
+  "scheduledToolPolicy": {
+    "version": 1,
+    "mode": "trusted"
+  },
+  "ownerProfileId": "gateway-owner",
+  "state": {
+    "streamSourceIdentity": "<REDACTED_UUID>",
+    "streamStatus": "running",
+    "consecutiveErrors": 0,
+    "scheduleErrorCount": 0,
+    "streamConsecutiveFailures": 0,
+    "scheduleActivatedAtMs": 1795433238275,
+    "streamLastStartedAtMs": 1795433238394,
+    "lastRunAtMs": 1795433241419,
+    "lastRunStatus": "ok",
+    "lastStatus": "ok",
+    "lastDurationMs": 319,
+    "lastDeliveryStatus": "not-requested",
+    "lastFailureNotificationDeliveryStatus": "not-requested",
+    "consecutiveSkipped": 0,
+    "triggerState": {
+      "batch": "ERROR ok"
+    }
+  },
+  "updatedAtMs": 1795433241738,
+  "streamExecutionHost": "gateway",
+  "configRevision": "sha256:I5XZDE459scCknwe2egths0YKXF-grd4q_ObXHlv824",
+  "reauthorizationRequired": false,
+  "lastRunAtMs": 1795433241419,
+  "lastRunStatus": "ok",
+  "lastDeliveryStatus": "not-requested",
+  "lastFailureNotificationDeliveryStatus": "not-requested"
+}
+
+--- 17-runs-escaped-space.stdout.log ---
+{
+  "entries": [
+    {
+      "ts": 1795433241738,
+      "jobId": "<REDACTED_UUID>",
+      "action": "finished",
+      "status": "ok",
+      "completionStatus": "succeeded",
+      "runId": "cron:<REDACTED_UUID>:1795433241419:cron-request.<REDACTED_UUID>",
+      "runAtMs": 1795433241419,
+      "durationMs": 319,
+      "deliveryStatus": "not-requested",
+      "delivery": {
+        "intended": {
+          "source": "explicit"
+        }
+      },
+      "jobName": "escaped-space",
+      "tsIso": "2026-11-23T19:27:21.738+08:00",
+      "runAtIso": "2026-11-23T19:27:21.419+08:00"
+    }
+  ],
+  "total": 1,
+  "offset": 0,
+  "limit": 50,
+  "hasMore": false,
+  "nextOffset": null
+}
+
+--- escaped-space.source-emitted.jsonl ---
+"ERRORLESS"
+"ERROR ok"
+
+===== HISTORICAL BASELINE 2c374b8cb52e5c25124a0afd46f66083f52f5430 — NOT CURRENT MAIN =====
+
+--- 04-get-cli-created.stdout.log ---
+{
+  "id": "<REDACTED_UUID>",
+  "agentId": "probe",
+  "name": "cli-storage",
+  "enabled": false,
+  "createdAtMs": 1793806914449,
+  "schedule": {
+    "kind": "stream",
+    "command": [
+      "<REDACTED_LOCAL_PATH>",
+      "<REDACTED_LOCAL_PATH>",
+      "<REDACTED_LOCAL_PATH>"
+    ],
+    "mode": "match",
+    "match": "^ERROR",
+    "batchMs": 50
+  },
+  "sessionTarget": "isolated",
+  "wakeMode": "now",
+  "payload": {
+    "kind": "script",
+    "toolsAllow": [],
+    "script": "json({ state: { batch: trigger.streamBatch } });",
+    "timeoutSeconds": 300,
+    "toolBudget": 50
+  },
+  "delivery": {
+    "mode": "none",
+    "channel": "last"
+  },
+  "scheduledToolPolicy": {
+    "version": 1,
+    "mode": "trusted"
+  },
+  "ownerProfileId": "gateway-owner",
+  "state": {
+    "streamSourceIdentity": "<REDACTED_UUID>",
+    "streamStatus": "stopped"
+  },
+  "updatedAtMs": 1793806914449,
+  "streamExecutionHost": "gateway",
+  "configRevision": "sha256:Cm4XcSwRz1GUkFiONIdtYHTvzhIYquDwmNxmJVPwwws"
+}
+
+--- 06-get-cli-edited.stdout.log ---
+{
+  "id": "<REDACTED_UUID>",
+  "agentId": "probe",
+  "name": "cli-storage",
+  "enabled": false,
+  "createdAtMs": 1793806914449,
+  "schedule": {
+    "kind": "stream",
+    "command": [
+      "<REDACTED_LOCAL_PATH>",
+      "<REDACTED_LOCAL_PATH>",
+      "<REDACTED_LOCAL_PATH>"
+    ],
+    "mode": "match",
+    "match": "^NOTICE",
+    "batchMs": 50
+  },
+  "sessionTarget": "isolated",
+  "wakeMode": "now",
+  "payload": {
+    "kind": "script",
+    "toolsAllow": [],
+    "script": "json({ state: { batch: trigger.streamBatch } });",
+    "timeoutSeconds": 300,
+    "toolBudget": 50
+  },
+  "delivery": {
+    "mode": "none",
+    "channel": "last"
+  },
+  "scheduledToolPolicy": {
+    "version": 1,
+    "mode": "trusted"
+  },
+  "ownerProfileId": "gateway-owner",
+  "state": {
+    "streamSourceIdentity": "<REDACTED_UUID>",
+    "streamStatus": "stopped",
+    "scheduleActivatedAtMs": 1793806917504
+  },
+  "updatedAtMs": 1793806917504,
+  "streamExecutionHost": "gateway",
+  "configRevision": "sha256:pmnsGASWh-luthDAldR1o0doOBGgiZznHPnS34JaymQ"
+}
+
+--- 22-runs-padded-false.stdout.log ---
+{
+  "entries": [
+    {
+      "ts": 1793806942027,
+      "jobId": "<REDACTED_UUID>",
+      "action": "finished",
+      "status": "ok",
+      "completionStatus": "succeeded",
+      "runId": "cron:<REDACTED_UUID>:1793806941741:cron-request.<REDACTED_UUID>",
+      "runAtMs": 1793806941741,
+      "durationMs": 286,
+      "deliveryStatus": "not-requested",
+      "delivery": {
+        "intended": {
+          "source": "explicit"
+        }
+      },
+      "jobName": "padded-false",
+      "tsIso": "2026-11-04T23:42:22.027+08:00",
+      "runAtIso": "2026-11-04T23:42:21.741+08:00"
+    }
+  ],
+  "total": 1,
+  "offset": 0,
+  "limit": 50,
+  "hasMore": false,
+  "nextOffset": null
+}
+
+--- padded-false.source-emitted.jsonl ---
+"ERRORLESS"
